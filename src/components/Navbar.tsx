@@ -1,5 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import Logo from './Logo'
+import Footer from './Footer'
 import { GithubIcon, LinkedInIcon, GmailIcon } from './Icons'
 import { flexCenter } from '../_mixin'
 import { motion } from 'framer-motion'
@@ -18,7 +19,6 @@ const CustomLink = ({to, title, className=""}: CustomLinkProps) => {
         group-hover:w-full transition-[width] ease duration-300
         '>&nbsp;</span>
     </Link>
-
 )}
 interface CustomAProps {
     href: string
@@ -31,7 +31,7 @@ const CustomA = ({href, icon, className}: CustomAProps) => {
             target={"_blank"}
             whileHover={{y: -2}}
             whileTap={{scale: 0.9}}
-            className={`${className} w-6`}
+            className={`${className}`}
             >{icon}</motion.a>
     )}
 
@@ -40,20 +40,20 @@ const CustomA = ({href, icon, className}: CustomAProps) => {
 export default function Navbar() {
     return (
         <>
-        <header className={`w-full px-32 font-medium flex items-center justify-between`}>
+        <header className={`w-full h-20 px-32 font-medium flex items-center justify-between relative`}>
             <nav>
                 <CustomLink to='/' title='Home' className='mr-4'/>
                 <CustomLink to='/About' title='About' className='mx-4'/>
-                <CustomLink to='/Projects' title='Projects' className='mx-4'/>
-                <CustomLink to='/Articles' title='Articles' className='ml-4'/>
+                <CustomLink to='/Projects' title='Projects' className='ml-4'/>
             </nav>
             <Logo />
             <nav className={`${flexCenter} flex-wrap`}>
-                <CustomA href='' icon={<LinkedInIcon className={''}/>} className='mr-3'/>
-                <CustomA href='' icon={<GmailIcon className={''}/>} className='mx-3'/>
-                <CustomA href='' icon={<GithubIcon className={''}/>} className='ml-3'/>
+                <CustomA href='https://www.linkedin.com/in/ido-band/' icon={<LinkedInIcon className={''}/>} className='mr-3'/>
+                <CustomA href='mailto:ido.bandd@gmail.com' icon={<GmailIcon className={''}/>} className='mx-3'/>
+                <CustomA href='https://github.com/IdoBand' icon={<GithubIcon className={''}/>} className='ml-3'/>
             </nav>
         </header>
+        {/* <Footer /> */}
         <Outlet />
         </>
     )

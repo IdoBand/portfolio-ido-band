@@ -5,9 +5,8 @@ interface LayoutProps {
     className?: string
 }
 const Layout = ({children, className=""}: LayoutProps) => {
-    console.log(children);
   return (
-    <div className={`${flexCenter} w-full h-full inline-block z-0 bg-light p-32 ${className}`}>
+    <div className={`w-full h-full inline-block z-0 bg-light p-32 ${className}`}>
         {children}
     </div>
   )
