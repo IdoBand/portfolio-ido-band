@@ -54,10 +54,10 @@ const Projects = () => {
                         <FeaturedProject 
                             type='Featured Project'
                             title='Private Garden'
-                            summary='This app can help you keep track of your own garden, create a timeline for each plant, identify plants by uploading images and more...'
+                            summary={`This app can help you keep track of your own garden, create a timeline for each plant, identify plants by uploading images and more... This project consists of a frontend React application, a backend Node.js & Express server and MongoDB Atlas`}
                             img={pgImg}
-                            link=''
-                            githubLink=''
+                            link='https://private-garden.onrender.com/'
+                            githubLink='https://github.com/IdoBand/private-garden'
                         />
                     </div>
                     <div className='col-span-6'>

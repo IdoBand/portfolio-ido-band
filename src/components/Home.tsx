@@ -33,7 +33,7 @@ export default function Home() {
                                 >Contact</Link>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </Layout>
             </main>
         </>
