@@ -17,7 +17,7 @@ const About = () => {
   return (
     <>
         <Layout className='py-10'>
-          <div className={`w-full ${flexCenter} flex-col`}>
+          <div className={`w-full ${flexCenter} flex-col dark:bg-dark dark:text-light`}>
               This page is still under construction.<br />
               <Spinner idx={spinnerIdx}/>
           </div>

@@ -16,7 +16,7 @@ interface Person {
     pHeight: string
 }
 
-const bgQuoteSVGurl = "bg-no-repeat bg-right-top bg-[url('../../public/assets/user-profile-images/bg-pattern-quotation.svg')]"
+const bgQuoteSVGurl = "bg-no-repeat bg-right-top bg-[url('/assets/user-profile-images/bg-pattern-quotation.svg')]"
 
 const personArray: Person[] = [
     {id: 0,
@@ -73,7 +73,7 @@ const personArray: Person[] = [
 
 const Quotes = () => {
   return (
-    <div className='grid grid-cols-4 gap-4'>
+    <div className={`grid grid-cols-4 gap-4`}>
         {personArray.map((person, idx) => {
             return (
             <span key={idx} className={`${person.gridClassNameProps} ${person.bgColor} ${person.textColor} ${person.spanSVG} rounded-lg shadow-md p-4`}>

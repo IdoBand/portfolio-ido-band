@@ -8,7 +8,7 @@ import TechStack from './TechStack'
 export default function Home() {
     return (
         <>
-            <main className={` text-dark w-full min-h-screen`}>
+            <main className={` text-dark w-full min-h-screen bg-light dark:bg-dark dark:text-light`}>
                 <Layout className='pt-0'>
                     <div className='flex items-center justify-between w-full'>
                         <div className='w-1/2'>
@@ -24,7 +24,9 @@ export default function Home() {
                             <div className='flex items-center self-start mt-2'>
                                 <Link to={'mailto:ido.bandd@gmail.com'} target={"_blank"} 
                                 className={`${flexCenter} bg-dark text-light rounded-lg p-2.5 px-6 text-lg
-                                        hover:bg-light hover:text-dark border-2 hover:border-solid hover:border-black`}
+                                        hover:bg-light hover:text-dark border-2 hover:border-solid hover:border-black
+                                        dark:bg-light dark:text-dark hover:dark:bg-dark hover:dark:text-light hover:dark:border-light
+                                        `}
                                 >
                                     Resume <LinkArrow className='w-6 ml-1'/>
                                 </Link>
