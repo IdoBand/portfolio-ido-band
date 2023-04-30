@@ -32,7 +32,7 @@ const techStackChild = {
 }
 const TechStack = () => {
   return (
-        <motion.div className='flex justify-start w-full font-medium'
+        <motion.div className='flex justify-start items-center w-full font-medium lg:justify-center xs:flex-wrap'
             variants={techStackContainer}
             initial="initial"
             animate="animate"
@@ -42,6 +42,7 @@ const TechStack = () => {
                 return <motion.span 
                     key={idx}
                     variants={techStackChild}
+                    className='md:py-2'
                     >
                         {icon}
                     </motion.span>
