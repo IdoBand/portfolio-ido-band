@@ -50,7 +50,7 @@ const CustomA = ({href, icon, className}: CustomAProps) => {
             target={"_blank"}
             whileHover={{y: -2}}
             whileTap={{scale: 0.9}}
-            className={`${className} sm:mx-1`}
+            className={`${className} sm:mx-1 lg:w-4`}
             >{icon}
         </motion.a>
     )}
