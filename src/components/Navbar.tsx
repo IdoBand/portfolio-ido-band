@@ -88,7 +88,7 @@ export default function Navbar() {
                     <CustomA href='https://github.com/IdoBand' icon={<GithubIcon className={''}/>} className='ml-3'/>
                     <button 
                         onClick={ () => setMode(mode === 'dark' ? 'light' : 'dark') }
-                        className={`${flexCenter} ml-5 p-1 rounded-full 
+                        className={`${flexCenter} ml-5 p-1 rounded-full lg:w-5
                         ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
                         `}
                         >

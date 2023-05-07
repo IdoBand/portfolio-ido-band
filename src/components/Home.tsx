@@ -35,7 +35,7 @@ export default function Home() {
                                         md:py-2 md:px-4 md:text-base
                                         `}
                                 >
-                                    Resume <LinkArrow className='w-6 ml-1'/>
+                                    Resume <LinkArrow className='w-6 ml-1 lg:w-5'/>
                                 </Link>
                                 <Link to={'mailto:ido.bandd@gmail.com'} target={"_blank"}
                                 className="ml-4 text-lg font-medium underline"
