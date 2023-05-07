@@ -92,7 +92,7 @@ export default function Navbar() {
                         ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
                         `}
                         >
-                            {mode === 'dark' ? <SunIcon className=''/> : <MoonIcon className=''/>}
+                            {mode === 'dark' ? <SunIcon className='lg:w-5'/> : <MoonIcon className='lg:w-5'/>}
                     </button>
                 </nav>
             </div>
