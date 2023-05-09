@@ -4,15 +4,21 @@ import { flexCenter } from '../_mixin'
 import { Link } from 'react-router-dom'
 import { GithubIcon } from './Icons'
 import pgImg from '/assets/projects/privategarden.jpg'
+import wordleImg from '/assets/projects/wordle.jpg'
 interface FeaturedProjectProps {
     type: string
     title: string
     summary: string
+    about: { 
+        frontend: string
+        backend: string
+        database: string
+    }
     img: string
     link: string
     githubLink: string
 }
-const FeaturedProject = ({type, title, summary, img, link, githubLink}: FeaturedProjectProps) => {
+const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: FeaturedProjectProps) => {
     return (
         <article className='w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl p-12
                             border border-solid border-dark dark:border-light
@@ -43,6 +49,12 @@ const FeaturedProject = ({type, title, summary, img, link, githubLink}: Featured
                 '>
                     {summary}
                 </p>
+                <p className='my-2 text-dark dark:text-light
+                    sm:text-sm'>
+                        <div className=''><b>Frontend:</b>{` ${about.frontend}`}</div>
+                        <div className=''><b>Backend:</b>{` ${about.backend}`}</div>
+                        <div className=''><b>Database:</b>{` ${about.database}`}</div>
+                </p>
                 <div className='mt-2 flex items-center'>
                     <Link to={githubLink} target='_blank' className='w-10'><GithubIcon className=''/></Link>
                     <Link to={link} 
@@ -67,12 +79,36 @@ const Projects = () => {
         <main className={`${flexCenter} flex-col w-full bg-light dark:bg-dark dark:text-light`}>
             <Layout className='pt-8'>
                 <AnimatedText text='Projects' className='mb-8 lg:!text-7xl sm:!text-6xl xs:!text-4xl'/>
-                <div className='grid grid-cols-12 gap-24 xl:gap-x-16 lg:gap-x-8 md:gap-y-24 md:gap-x-0'>
+                <div className='grid grid-cols-12 gap-16 xl:gap-x-16 lg:gap-x-8 md:gap-y-16 md:gap-x-0'>
+                    <div className='col-span-12'>
+                        <FeaturedProject 
+                            type='Featured Project'
+                            title='Wordle'
+                            summary={`a word-guessing game where players attempt to guess a hidden five-letter word by making multiple guesses and receiving feedback on the correctness of each guess.`}
+                            about={
+                               {
+                                frontend: 'React, Tailwind CSS, Vite, TypeScript',
+                                backend: 'AWS - EC2 Ubuntu, Node.js, Express, TypeScript',
+                                database: 'PostgresSQL'
+                                }
+                            }
+                            img={wordleImg}
+                            link='https://wordle-game-lgye.onrender.com/'
+                            githubLink='https://github.com/IdoBand/wordle'
+                        />
+                    </div>
                     <div className='col-span-12'>
                         <FeaturedProject 
                             type='Featured Project'
                             title='Private Garden'
-                            summary={`This app can help you keep track of your own garden, create a timeline for each plant, identify plants by uploading images and more... This project consists of a frontend React application, a backend Node.js & Express server and MongoDB Atlas`}
+                            summary={`This app can help you keep track of your own garden, create a timeline for each plant, identify plants by uploading images and more...`}
+                            about={
+                                {
+                                frontend: 'React, SCSS, Vite, TypeScript',
+                                backend: 'Node.js, Express, TypeScript',
+                                database: 'MongoDB Atlas'
+                                }
+                            }
                             img={pgImg}
                             link='https://private-garden.onrender.com/'
                             githubLink='https://github.com/IdoBand/private-garden'
@@ -90,5 +126,5 @@ const Projects = () => {
     </>
   )
 }
-
+///////`This project consists of a frontend React application, a backend Node.js & Express server and MongoDB Atlas`
 export default Projects
