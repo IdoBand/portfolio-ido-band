@@ -52,9 +52,11 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
                 </p>
                 <p className='my-2 text-dark dark:text-light
                     sm:text-sm'>
-                        <div className=''><b>Frontend:</b>{` ${about.frontend}`}</div>
-                        <div className=''><b>Backend:</b>{` ${about.backend}`}</div>
-                        <div className=''><b>Database:</b>{` ${about.database}`}</div>
+                        
+                        
+                        {about.frontend && <div className=''><b>Frontend:</b>{` ${about.frontend}`}</div>}
+                        {about.backend && <div className=''><b>Backend:</b>{` ${about.backend}`}</div>}
+                        {about.database && <div className=''><b>Database:</b>{` ${about.database}`}</div>}
                 </p>
                 <div className='mt-2 flex items-center'>
                     <Link to={githubLink} target='_blank' className='w-10'><GithubIcon className=''/></Link>

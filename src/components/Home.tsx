@@ -8,11 +8,11 @@ import TechStack from './TechStack'
 export default function Home() {
     return (
         <>
-            <main className={` text-dark w-full min-h-screen bg-light dark:bg-dark dark:text-light`}>
-                <Layout className='pt-0'>
+            <main className={` text-dark w-full min-h-screen bg-light dark:bg-dark dark:text-light pt-10 lg:pt-0`}>
+                <Layout className='pt-0 lg:p-4'>
                     <div className='flex items-center justify-between w-full lg:flex-col'>
                         <div className='w-1/2'>
-                          <img src={homePortfolioImage} className='w-auto h-auto rounded-full lg:hidden md:inline-block md:w-full' />
+                          <img src={homePortfolioImage} className='w-auto h-auto rounded-full md:inline-block md:w-full' />
                         </div> 
                         <div className='w-1/2 flex flex-col items-center lg:w-full lg:text-center'>
                             <AnimatedText text='Transforming Ideas Into Reality With Code And Design.' 
