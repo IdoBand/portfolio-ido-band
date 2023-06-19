@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { GithubIcon } from './Icons'
 import pgImg from '/assets/projects/privategarden.jpg'
 import wordleImg from '/assets/projects/wordle.jpg'
+import htImg  from '/assets/projects/hourTracker.jpg'
 interface FeaturedProjectProps {
     type: string
     title: string
@@ -83,6 +84,23 @@ const Projects = () => {
                     <div className='col-span-12'>
                         <FeaturedProject 
                             type='Featured Project'
+                            title='Hour Tracker'
+                            summary={`This app's purpose is to help you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`}
+                            about={
+                                {
+                                frontend: 'Next.js, React, TypeScript, Tailwind CSS',
+                                backend: 'Next.js',
+                                database: ''
+                                }
+                            }
+                            img={htImg}
+                            link='https://hour-tracker-cz564nm11-idoband.vercel.app/'
+                            githubLink='https://github.com/IdoBand/hour-tracker'
+                        />
+                    </div>
+                    <div className='col-span-12'>
+                        <FeaturedProject 
+                            type='Featured Project'
                             title='Wordle'
                             summary={`a word-guessing game where players attempt to guess a hidden five-letter word by making multiple guesses and receiving feedback on the correctness of each guess.`}
                             about={
@@ -101,7 +119,7 @@ const Projects = () => {
                         <FeaturedProject 
                             type='Featured Project'
                             title='Private Garden'
-                            summary={`This app can help you keep track of your own garden, create a timeline for each plant, identify plants by uploading images and more...`}
+                            summary={`This app can help you monitor your own garden, create a timeline for each plant, identify plants by uploading images and more...`}
                             about={
                                 {
                                 frontend: 'React, SCSS, Vite, TypeScript',
@@ -114,17 +132,10 @@ const Projects = () => {
                             githubLink='https://github.com/IdoBand/private-garden'
                         />
                     </div>
-                    <div className='col-span-6'>
-                        {/* Project-1 */}
-                    </div>
-                    <div className='col-span-6'>
-                        {/* Project-2 */}
-                    </div>
                 </div>
             </Layout>
         </main>
     </>
   )
 }
-///////`This project consists of a frontend React application, a backend Node.js & Express server and MongoDB Atlas`
 export default Projects
