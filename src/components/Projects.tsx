@@ -3,7 +3,7 @@ import AnimatedText from './AnimatedText'
 import { flexCenter } from '../_mixin'
 import { Link } from 'react-router-dom'
 import { GithubIcon } from './Icons'
-import pgImg from '/assets/projects/privategarden.jpg'
+import pgImg from '/assets/projects/newPrivateGarden.jpg'
 import wordleImg from '/assets/projects/wordle.jpg'
 import htImg  from '/assets/projects/hourTracker.jpg'
 interface FeaturedProjectProps {
