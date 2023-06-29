@@ -96,7 +96,7 @@ const Projects = () => {
                                 }
                             }
                             img={htImg}
-                            link='https://hour-tracker-cz564nm11-idoband.vercel.app/'
+                            link='https://hour-tracker.vercel.app/'
                             githubLink='https://github.com/IdoBand/hour-tracker'
                         />
                     </div>
