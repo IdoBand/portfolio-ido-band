@@ -87,17 +87,35 @@ const Projects = () => {
                         <FeaturedProject 
                             type='Featured Project'
                             title='Hour Tracker'
-                            summary={`This app's purpose is to help you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`}
+                            summary={`An app that helps you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`}
                             about={
                                 {
                                 frontend: 'Next.js, React, TypeScript, Tailwind CSS',
                                 backend: 'Next.js',
-                                database: ''
+                                database: 'PostgresSQL'
                                 }
                             }
                             img={htImg}
                             link='https://hour-tracker.vercel.app/'
                             githubLink='https://github.com/IdoBand/hour-tracker'
+                        />
+                    </div>
+                    
+                    <div className='col-span-12'>
+                        <FeaturedProject 
+                            type='Featured Project'
+                            title='Private Garden'
+                            summary={`This app helps you monitor your own garden, create a timeline for each plant, identify plants by uploading images and more...`}
+                            about={
+                                {
+                                frontend: 'React, SCSS, Vite, TypeScript',
+                                backend: 'AWS - EC2 Ubuntu, Node.js, Express, TypeScript',
+                                database: 'MongoDB Atlas'
+                                }
+                            }
+                            img={pgImg}
+                            link='https://private-garden.onrender.com/'
+                            githubLink='https://github.com/IdoBand/private-garden'
                         />
                     </div>
                     <div className='col-span-12'>
@@ -115,23 +133,6 @@ const Projects = () => {
                             img={wordleImg}
                             link='https://wordle-game-lgye.onrender.com/'
                             githubLink='https://github.com/IdoBand/wordle'
-                        />
-                    </div>
-                    <div className='col-span-12'>
-                        <FeaturedProject 
-                            type='Featured Project'
-                            title='Private Garden'
-                            summary={`This app can help you monitor your own garden, create a timeline for each plant, identify plants by uploading images and more...`}
-                            about={
-                                {
-                                frontend: 'React, SCSS, Vite, TypeScript',
-                                backend: 'Node.js, Express, TypeScript',
-                                database: 'MongoDB Atlas'
-                                }
-                            }
-                            img={pgImg}
-                            link='https://private-garden.onrender.com/'
-                            githubLink='https://github.com/IdoBand/private-garden'
                         />
                     </div>
                 </div>
