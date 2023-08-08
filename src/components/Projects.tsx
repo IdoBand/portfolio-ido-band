@@ -6,6 +6,7 @@ import { GithubIcon } from './Icons'
 import pgImg from '/assets/projects/newPrivateGarden.jpg'
 import wordleImg from '/assets/projects/wordle.jpg'
 import htImg  from '/assets/projects/hourTracker.jpg'
+import twobpImg  from '/assets/projects/2bprecise.jpg'
 interface FeaturedProjectProps {
     type: string
     title: string
@@ -52,11 +53,9 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
                 </p>
                 <p className='my-2 text-dark dark:text-light
                     sm:text-sm'>
-                        
-                        
-                        {about.frontend && <div className=''><b>Frontend:</b>{` ${about.frontend}`}</div>}
-                        {about.backend && <div className=''><b>Backend:</b>{` ${about.backend}`}</div>}
-                        {about.database && <div className=''><b>Database:</b>{` ${about.database}`}</div>}
+                        {about.frontend && <span className=''><b>Frontend:</b>{` ${about.frontend}`}</span>}<br />
+                        {about.backend && <span className=''><b>Backend:</b>{` ${about.backend}`}</span>}<br />
+                        {about.database && <span className=''><b>Database:</b>{` ${about.database}`}</span>}
                 </p>
                 <div className='mt-2 flex items-center'>
                     <Link to={githubLink} target='_blank' className='w-10'><GithubIcon className=''/></Link>
@@ -83,6 +82,23 @@ const Projects = () => {
             <Layout className='pt-8'>
                 <AnimatedText text='Projects' className='mb-8 lg:!text-7xl sm:!text-6xl xs:!text-4xl'/>
                 <div className='grid grid-cols-12 gap-16 xl:gap-x-16 lg:gap-x-8 md:gap-y-16 md:gap-x-0'>
+                    <div className='col-span-12'>
+                        <FeaturedProject 
+                            type='Featured Project'
+                            title='2bPrecise Replica'
+                            summary={`Recreation of a cool and interactive homepage design.`}
+                            about={
+                                {
+                                frontend: 'React, TypeScript, Vite, gsap',
+                                backend: '',
+                                database: ''
+                                }
+                            }
+                            img={twobpImg}
+                            link='https://twobprecise-replica.onrender.com/'
+                            githubLink='https://github.com/IdoBand/2bprecise-replica'
+                        />
+                    </div>
                     <div className='col-span-12'>
                         <FeaturedProject 
                             type='Featured Project'
