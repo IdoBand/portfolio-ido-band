@@ -27,7 +27,6 @@ const techStackChild = {
         x: 0,
         transition: {
             duration: 1,
-            staggerChildren: 0.08
         },
     }
 }

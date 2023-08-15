@@ -3,10 +3,12 @@ import AnimatedText from './AnimatedText'
 import { flexCenter } from '../_mixin'
 import { Link } from 'react-router-dom'
 import { GithubIcon } from './Icons'
-import pgImg from '/assets/projects/newPrivateGarden.jpg'
+import pgImg from '/assets/projects/privateGarden.jpg'
 import wordleImg from '/assets/projects/wordle.jpg'
 import htImg  from '/assets/projects/hourTracker.jpg'
 import twobpImg  from '/assets/projects/2bprecise.jpg'
+import useIntersectionObserver from '../hooks/useIntersectionObserver'
+import { motion } from 'framer-motion'
 interface FeaturedProjectProps {
     type: string
     title: string
@@ -20,9 +22,24 @@ interface FeaturedProjectProps {
     link: string
     githubLink: string
 }
+
+
 const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: FeaturedProjectProps) => {
+    const { firstIntersection, htmlElementRef } = useIntersectionObserver()
     return (
-        <article className='w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl p-12
+        <motion.article
+            initial={{
+                opacity: 0,
+                y: 100,
+            }}
+            animate={{
+                opacity: firstIntersection ? 1 : 0,
+                y: firstIntersection ? 0 : 100,
+                transition: {
+                    duration: 0.6
+                }
+            }}
+            ref={htmlElementRef} className='w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl p-12
                             border border-solid border-dark dark:border-light
                             bg-light shadow-2xl
                             dark:bg-dark dark:text-light
@@ -32,14 +49,34 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
                     bg-dark dark:bg-light rounded-br-3xl
                     xs:-right-2 sm:h-[102%] xs:w-full xs:rounded-[1.5rem]
             ' />
-            <Link to={link} 
-                    target='_blank' 
-                    className='w-1/2 cursor-pointer overflow-hidden rounded-lg
-                    lg:w-full
-                    '>
-                <img src={img} alt={title} className='w-full h-auto' />
-            </Link>
-            <div className='w-1/2 flex flex-col items-start justify-between pl-6
+                <Link to={link} 
+                        target='_blank' 
+                        className='w-1/2 cursor-pointer overflow-hidden rounded-lg
+                        lg:w-full overflow-x-hidden
+                        '>
+                    <motion.img
+                        whileHover={{
+                            scale: 1.05,
+                            transition: {
+                                duration: 0.4
+                            }
+                        }}
+                        src={img}
+                        alt={title}
+                        className='w-full h-auto' />
+                </Link>
+            <motion.div
+                initial={{
+                    opacity: 0
+                }}
+                animate={{
+                    opacity: firstIntersection ? 1 : 0,
+                    transition: {
+                        duration: 0.3,
+                        delay: 0.6
+                    }
+                }}
+                className='w-1/2 flex flex-col items-start justify-between pl-6
                 lg:w-full lg:pl-0 lg:pt-3
             '>
                 <span className='text-primary font-medium text-xl dark:text-primaryDark xs:text-base'>{type}</span>
@@ -59,6 +96,16 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
                 </p>
                 <div className='mt-2 flex items-center'>
                     <Link to={githubLink} target='_blank' className='w-10'><GithubIcon className=''/></Link>
+                    <motion.div
+                        whileHover={{ scale: 1.1,
+                        transition: {
+                            duration: 0.5,
+                            type: "spring",
+                            stiffness: 1000,
+                            damping: 15,
+                        }
+                        }}
+                    >
                     <Link to={link} 
                           target='_blank' 
                           className='ml-4 rounded-lg bg-dark text-light text-lg 
@@ -69,13 +116,16 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
                             >
                             Visit Project
                     </Link>
+                    </motion.div>
                 </div>
-            </div>
-        </article>
+            </motion.div>
+        </motion.article>
     )
 }
 
 const Projects = () => {
+
+
   return (
     <>
         <main className={`${flexCenter} flex-col w-full bg-light dark:bg-dark dark:text-light`}>
@@ -106,8 +156,8 @@ const Projects = () => {
                             summary={`An app that helps you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`}
                             about={
                                 {
-                                frontend: 'Next.js, React, TypeScript, Tailwind CSS',
-                                backend: 'Next.js',
+                                frontend: 'Next.js 13, React, TypeScript, Tailwind CSS',
+                                backend: 'Next.js 13',
                                 database: 'PostgresSQL'
                                 }
                             }
