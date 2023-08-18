@@ -1,13 +1,13 @@
-import { LinkArrow, CssIcon, HtmlIcon, JavaScriptIcon, ReactIcon, SassIcon, TypeScriptIcon, TailwindIcon } from './Icons'
+import { CssIcon, HtmlIcon, JavaScriptIcon, ReactIcon, SassIcon, TypeScriptIcon, TailwindIcon } from './Icons'
 import { motion } from 'framer-motion'
 const Icons = [
-    <HtmlIcon className='mx-3' />,
-    <CssIcon className='mx-3' />,
-    <TypeScriptIcon className='mx-3' />,
-    <ReactIcon className='mx-3' />,
-    <JavaScriptIcon className='mx-3' />,
-    <SassIcon className='mx-3' />,
-    <TailwindIcon className='w-8 mx-3' />,
+    <HtmlIcon className='mx-3' key={'HtmlIcon'} />,
+    <CssIcon className='mx-3' key={'CssIcon'} />,
+    <TypeScriptIcon className='mx-3' key={'TypeScriptIcon'} />,
+    <ReactIcon className='mx-3' key={'ReactIcon'} />,
+    <JavaScriptIcon className='mx-3' key={'JavaScriptIcon'} />,
+    <SassIcon className='mx-3' key={'SassIcon'} />,
+    <TailwindIcon className='w-8 mx-3' key={'TailwindIcon'} />,
 ]
 const techStackContainer = {
     initial: {},

@@ -1,8 +1,8 @@
-import imageDaniel from '/assets/user-profile-images/imageDaniel.jpg'
-import imageLilly from '/assets/user-profile-images/imageLilly.jpg'
-import imageJonathan from '/assets/user-profile-images/imageJonathan.jpg'
-import imageRose from '/assets/user-profile-images/imageRose.jpg'
-import imageDavid from '/assets/user-profile-images/imageDavid.jpg'
+import imageDaniel from '/user-profile-images/imageDaniel.jpg'
+import imageLilly from '/user-profile-images/imageLilly.jpg'
+import imageJonathan from '/user-profile-images/imageJonathan.jpg'
+import imageRose from '/user-profile-images/imageRose.jpg'
+import imageDavid from '/user-profile-images/imageDavid.jpg'
 
 interface Person {
     id: number
@@ -16,7 +16,7 @@ interface Person {
     pHeight: string
 }
 
-const bgQuoteSVGurl = "bg-no-repeat bg-right-top bg-[url('/assets/user-profile-images/bg-pattern-quotation.svg')]"
+const bgQuoteSVGurl = "bg-no-repeat bg-right-top bg-[url('/user-profile-images/bg-pattern-quotation.svg')]"
 
 const personArray: Person[] = [
     {id: 0,

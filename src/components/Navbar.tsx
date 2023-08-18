@@ -9,7 +9,7 @@ interface CustomLinkProps {
     to: string
     title: string
     className: string
-    toggle?: any
+    toggle?: () => void
 }
 
 const CustomLink = ({to, title, className=""}: CustomLinkProps) => {
@@ -26,8 +26,9 @@ const CustomLink = ({to, title, className=""}: CustomLinkProps) => {
 
 const CustomMobileLink = ({to, title, className="", toggle}: CustomLinkProps) => {
     const handleClick = () => {
-        // toggle allows me to use a state setter outside of the component function.
-        toggle()
+        if (toggle) {
+            toggle()
+        }
     }
     return (
     <Link to={to} className={`${className} relative group  text-light dark:text-dark my-2`} onClick={handleClick}>
@@ -64,7 +65,7 @@ export default function Navbar() {
     }
     return (
         <>
-        <header className={`w-full h-20 px-32 font-medium flex items-center justify-between relative bg-light
+        <header className={` w-full h-20 px-32 font-medium flex items-center justify-between relative bg-light
         dark:bg-dark dark:text-light
         lg:justify-start lg:p-10
         `}>
@@ -80,6 +81,7 @@ export default function Navbar() {
                     <CustomLink to='/' title='Home' className='mr-4'/>
                     <CustomLink to='/About' title='About' className='mx-4'/>
                     <CustomLink to='/Projects' title='Projects' className='ml-4'/>
+                    <CustomLink to='/Curtain' title='Curtain' className='ml-4'/>
                 </nav>
                 
                 <nav className={`${flexCenter} flex-wrap`}>
