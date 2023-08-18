@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedInIcon, GmailIcon, SunIcon, MoonIcon } from './Icons'
+import { GithubIcon, LinkedInIcon, GmailIcon } from './Icons'
 import { motion, AnimatePresence } from 'framer-motion'
 
 type ContactProps = {
@@ -8,31 +8,31 @@ const Contact = ({isMenuOpen}: ContactProps) => {
 
   return (
     <AnimatePresence >
-    <motion.section
-        initial={{
-            y: 100,
-            opacity: 0
-        }}
-        animate={{
-            y: isMenuOpen ? 0 : 100,
-            opacity: isMenuOpen ? 1 : 0,
-            transition: {
-                duration: 0.4,
-                delay: 0.5
-            }
-        }}
-        exit={{
-            y: 100,
-            opacity: 0,
-            transition: {
-                duration: 0.4,
-            }
-        }}
-        className='bg-stone-800 p-2 bottom-0 left-2 w-max  absolute rounded-t-xl'>
-        <CustomA href='https://www.linkedin.com/in/ido-band/' icon={<LinkedInIcon className={''}/>} className=''/>
-        <CustomA href='mailto:ido.bandd@gmail.com' icon={<GmailIcon className={''}/>} className=''/>
-        <CustomA href='https://github.com/IdoBand' icon={<GithubIcon fillColor='#fff' className={''}/>} className=''/>
-    </motion.section>
+        <motion.section
+            initial={{
+                y: 100,
+                opacity: 0
+            }}
+            animate={{
+                y: isMenuOpen ? 0 : 100,
+                opacity: isMenuOpen ? 1 : 0,
+                transition: {
+                    duration: 0.4,
+                    delay: 0.5
+                }
+            }}
+            exit={{
+                y: 100,
+                opacity: 0,
+                transition: {
+                    duration: 0.4,
+                }
+            }}
+            className='bg-stone-800 p-2 bottom-0 left-2 w-max  fixed rounded-t-xl'>
+            <CustomA href='https://www.linkedin.com/in/ido-band/' icon={<LinkedInIcon className={'my-2'}/>} className=''/>
+            <CustomA href='mailto:ido.bandd@gmail.com' icon={<GmailIcon className={''}/>} className='my-2'/>
+            <CustomA href='https://github.com/IdoBand' icon={<GithubIcon fillColor='#fff' className={'my-2'}/>} className=''/>
+        </motion.section>
     </AnimatePresence>
   )
 }
@@ -45,11 +45,12 @@ interface CustomAProps {
 }
 const CustomA = ({href, icon, className}: CustomAProps) => {
     return (
-        <motion.a href={href}
+        <motion.a 
+            href={href}
             target={"_blank"}
-            whileHover={{y: -2}}
+            whileHover={{y: -2, scale: 1.1}}
             whileTap={{scale: 0.9}}
-            className={`${className} sm:mx-1 lg:w-4`}
+            className={`${className}`}
             >{icon}
         </motion.a>
     )}

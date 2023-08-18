@@ -3,7 +3,7 @@ import { CircularSvg } from "./Icons"
 import { Link } from 'react-router-dom'
 const HireMe = () => {
   return (
-    <div className={`fixed left-4 bottom-4 ${flexCenter} overflow-hidden md:right-1 md:left-auto md:top-0 md:bottom-auto md:absolute`}>
+    <div className={`absolute -right-2 z-30 -top-3 ${flexCenter} overflow-hidden md:right-1 md:left-auto md:top-0 md:bottom-auto md:absolute`}>
         <div className={`${flexCenter} relative spin-slow md:w-32`}>
             <CircularSvg className={"fill-dark animate-spin-slow dark:fill-light"}/>
             <Link to='mailto:ido.bandd@gmail.com'

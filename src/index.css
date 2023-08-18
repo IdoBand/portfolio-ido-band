@@ -10,7 +10,7 @@
 }
 
 .page-layout {
-    @apply px-24 py-10 bg-light min-h-full w-full dark:bg-dark xl:p-20 lg:p-16 md:p-12 sm:p-6
+    @apply px-24 pt-10 pb-32 bg-light min-h-full w-full dark:bg-dark xl:px-20 lg:px-16 lg:pt-6 md:px-12 sm:px-6
 }
 .page-header {
     @apply pb-6 lg:!text-7xl sm:!text-6xl xs:!text-4xl
@@ -21,10 +21,7 @@
 html, body {
     background-color: blueviolet;
 }
-.curtain-component-container {
-    height: 100dvh;
-    background-color: black;
-}
+
 #curtain-content-container {
     width: 100%;
     height: 100dvh;
@@ -45,21 +42,32 @@ html, body {
     left: 50%;
     bottom: 1rem;
     transform: translateX(-50%);
-    background-color: #5f9ea0;
     z-index: 30;
     border-radius: 50%;
     border: none;
     outline: none;
-    box-shadow: 0 0 4rem rgba(0 0 0 / 45%);
     transition: all 0.4s ease;
+}
+.toggle-menu-button::before {
+    content: 'IB';
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5f9ea0;
+    box-shadow: 0 0 4rem rgba(0 0 0 / 45%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: 1;
 }
 .toggle-menu-button:hover {
     scale: 1.1;
-    translate: (-50%, 0);
+    transform: translateX(-50%);
 }
 .toggle-menu-button:active {
     scale: 0.9;
-    translate: (-50%, 0);
+    transform: translateX(-50%);
 }
 #menu-nav {
     position: absolute;
@@ -69,8 +77,6 @@ html, body {
     z-index: 1;
     background-color: black;
     width: 100%;
-
-
     overflow: hidden;
 }
 #menu-nav-inner-container {
@@ -89,26 +95,27 @@ html, body {
     scale: 1;
 }
 .menu-li {
+    width: max(20vw, 300px);
     flex-shrink: 0;
     scale: 0.8;
     transition: scale 0.6s cubic-bezier(.13,.53, .38,.97);
     cursor: pointer;
 }
 .menu-li.open {
-    flex-shrink: 0;
+    flex-shrink: 1;
     scale: 1;
 }
-@media screen and (max-width: 1000px) {
-    .menu-li.open {
-        flex-shrink: 1;
-        scale: 1;
-    }
- }
+
 @media screen and (max-width: 500px) {
+    #menu-nav {
+        overflow: auto;
+    }
     #menu-nav-inner-container {
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        overflow-y: auto;
+        padding-bottom: 6rem;
     }
  }
 .li-title {
@@ -120,15 +127,21 @@ html, body {
     letter-spacing: 2px;
 }
 .li-img {
-    width: max(20vw, 300px);
+    width: 100%;
     margin-top: 0.75rem;
     border-radius: 10px;
     aspect-ratio: 16/8.5;
+    background-size: 200%;
+    animation: scan-image 15s linear infinite;
 }
 
-/* ////////////////////////////////////////// */
+/* ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///
+  //////////////////                               ///////////////////
+  //////////////////      H O M E   S L I D E      ///////////////////
+  //////////////////                               ///////////////////
+///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  /// */
 .ul-slide-container {
-    margin-left: 1rem;
+    margin: 0 0.5rem;
     height: 100dvh;
     overflow: hidden;
 }
@@ -138,10 +151,10 @@ html, body {
     position: relative;
 }
 .ul-slide.one {
-    animation: slideUp 85s linear;
+    animation: slideUp 115s linear infinite;
 }
 .ul-slide.two {
-    animation: slideUp 75s linear;
+    animation: slideUp 108s linear infinite;
 }
 .slide-image {
     width: max(20vw, 300px);
@@ -154,7 +167,70 @@ html, body {
     0% {
         transform: translateY(0%);
     }
-    100% {
+    50% {
         transform: translateY(-49%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+
+/* ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///
+  //////////////////         N A V  M E N U        ///////////////////
+  //////////////////      A N I M A T I O N S      ///////////////////
+  //////////////////                               ///////////////////
+///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  /// */
+
+
+@keyframes scan-image {
+    0% {
+        background-position: 36% 42%;
+        background-size: 200%;
+    }
+
+    20% {
+        background-position: 30% 35%;
+        background-size: 200%;
+    }
+    
+    20.0001% {
+        background-position: 60% 85%;
+        background-size: 300%;
+    }
+    
+    40% {
+        background-position: 49% 81%;
+        background-size: 300%;
+    }
+    
+    40.0001% {
+        background-position: 80% 42%;
+        background-size: 300%;
+    }
+    
+    60% {
+        background-position: 84% 33%;
+        background-size: 300%;
+    }
+    
+    60.0001% {
+        background-position: 0% 0%;
+        background-size: 300%;
+    }
+    
+    80% {
+        background-position: 15% 4%;
+        background-size: 300%;
+    }
+    
+    80.0001% {
+        background-position: 80% 10%;
+        background-size: 300%;
+    }
+    
+    100% {
+        background-position: 72% 14%;
+        background-size: 300%;
     }
 }

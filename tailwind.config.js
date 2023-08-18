@@ -11,6 +11,7 @@ export default {
         dark: '#1b1b1b',
         light: '#f5f5f5',
         primary: '#B63E96',
+        secondary: '#5f9ea0',
         primaryDark: '#58E6D9',
       },
       animation: {

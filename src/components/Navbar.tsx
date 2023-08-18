@@ -9,7 +9,7 @@ interface CustomLinkProps {
     to: string
     title: string
     className: string
-    toggle?: any
+    toggle?: () => void
 }
 
 const CustomLink = ({to, title, className=""}: CustomLinkProps) => {
@@ -26,8 +26,9 @@ const CustomLink = ({to, title, className=""}: CustomLinkProps) => {
 
 const CustomMobileLink = ({to, title, className="", toggle}: CustomLinkProps) => {
     const handleClick = () => {
-        // toggle allows me to use a state setter outside of the component function.
-        toggle()
+        if (toggle) {
+            toggle()
+        }
     }
     return (
     <Link to={to} className={`${className} relative group  text-light dark:text-dark my-2`} onClick={handleClick}>

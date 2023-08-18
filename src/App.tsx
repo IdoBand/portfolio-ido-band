@@ -1,11 +1,7 @@
-import Navbar from "./components/Navbar"
+import Curtain from "./components/Curtain"
 function App() {
-
-
   return (
-    <>
-      <Navbar />
-    </>
+    <Curtain />
     
   )
 }
