@@ -1,5 +1,5 @@
 import { BounceLoader, PuffLoader, RingLoader } from 'react-spinners'
-import { flexCenter } from '../_mixin'
+
 interface SpinnerProps {
     idx?:number
 }
@@ -11,7 +11,7 @@ export default function Spinner ({idx=0}: SpinnerProps) {
       <RingLoader color={color} key={'RingLoader'} />,
   ]
   return (
-    <span className={`w-full py-8 ${flexCenter}`}>
+    <span className={`w-full py-8 flex-center`}>
         {arr[idx]}
     </span>
   )
