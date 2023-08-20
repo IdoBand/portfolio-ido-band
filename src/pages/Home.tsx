@@ -2,7 +2,6 @@ import homePortfolioImage from '/homePortfolioImage.png'
 import AnimatedText from '../components/AnimatedText'
 import { Link } from 'react-router-dom'
 import { LinkArrow } from '../components/Icons'
-import { flexCenter } from '../_mixin'
 import TechStack from '../components/TechStack'
 import Slide from '../components/Slide'
 import skateboarder from '/slide/skateboarder.jpg'
@@ -20,7 +19,7 @@ export default function Home() {
                 <Slide images={[ lens, skateboarder, icelandRoad]} variant='one' />
                 <Slide images={[ girl, beach, horses]} variant='two' />
             </div>
-            <div className={` text-dark w-10/12 bg-white/90 dark:bg-dark/95 dark:text-light pt-10 lg:pt-2 absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-3xl p-6`}>
+            <div className={` text-dark w-10/12 bg-white/90 dark:bg-dark/95 dark:text-light pt-10 lg:pt-2 absolute z-10 translate-center rounded-3xl p-6`}>
                 <div className='flex items-center justify-between w-full lg:flex-col'>
                     <div className='w-1/2'>
                         <img src={homePortfolioImage} className='w-auto h-auto rounded-full md:inline-block md:w-full' />
@@ -40,7 +39,7 @@ export default function Home() {
                         <TechStack />
                         <div className='flex items-center self-start my-4 lg:self-center'>
                             <Link to={'mailto:ido.bandd@gmail.com'} target={"_blank"} 
-                            className={`${flexCenter} bg-dark text-light rounded-lg p-2.5 px-6 text-lg
+                            className={`flex-center bg-dark text-light rounded-lg p-2.5 px-6 text-lg
                                     hover:bg-light hover:text-dark border-2 hover:border-solid hover:border-black
                                     dark:bg-light dark:text-dark hover:dark:bg-dark hover:dark:text-light hover:dark:border-light
                                     md:py-2 md:px-4 md:text-base

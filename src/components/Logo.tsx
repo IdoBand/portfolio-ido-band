@@ -1,15 +1,15 @@
 
 import { Link } from 'react-router-dom'
-import { flexCenter, absoluteTransformCenter } from '../_mixin'
+
 import { motion } from 'framer-motion'
 
 const MotionLink = motion(Link)
 const Logo = () => {
   return (
-    <div className={`${flexCenter} mt-2`}>
+    <div className={`flex-center mt-2`}>
         <MotionLink 
           to={"/"} 
-          className={`w-16 h-16 bg-dark text-light ${flexCenter} mt-2 rounded-full text-2xl ${absoluteTransformCenter}
+          className={`w-16 h-16 bg-dark text-light flex-center mt-2 rounded-full text-2xl absolute translate-center
           border border-solid border-transparent dark:border-light
           `}
           whileHover={{

@@ -1,7 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import Logo from './Logo'
 import { GithubIcon, LinkedInIcon, GmailIcon, SunIcon, MoonIcon } from './Icons'
-import { flexCenter, fixedTransformCenter } from '../_mixin'
 import { motion } from 'framer-motion'
 import useThemeSwitcher from '../hooks/useThemeSwitcher'
 import { useState } from 'react'
@@ -70,7 +69,7 @@ export default function Navbar() {
         lg:justify-start lg:p-10
         `}>
             <button 
-                className={`${flexCenter} hidden text-xl lg:flex`}
+                className={`flex-center hidden text-xl lg:flex`}
                 onClick={handleMenuIsOpen}
                 >
                 {menuIsOpen ? 'X' : '\u2630'}
@@ -84,13 +83,13 @@ export default function Navbar() {
                     <CustomLink to='/Curtain' title='Curtain' className='ml-4'/>
                 </nav>
                 
-                <nav className={`${flexCenter} flex-wrap`}>
+                <nav className={`flex-center flex-wrap`}>
                     <CustomA href='https://www.linkedin.com/in/ido-band/' icon={<LinkedInIcon className={''}/>} className='mr-3'/>
                     <CustomA href='mailto:ido.bandd@gmail.com' icon={<GmailIcon className={''}/>} className='mx-3'/>
                     <CustomA href='https://github.com/IdoBand' icon={<GithubIcon className={''}/>} className='ml-3'/>
                     <button 
                         onClick={ () => setMode(mode === 'dark' ? 'light' : 'dark') }
-                        className={`${flexCenter} ml-5 p-1 rounded-full lg:w-5
+                        className={`flex-center ml-5 p-1 rounded-full lg:w-5
                         ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
                         `}
                         >
@@ -103,22 +102,22 @@ export default function Navbar() {
                 <motion.div 
                 initial={{scale:0, opacity:0, x: "-50%", y: "-50%"}}
                 animate={{scale: 1, opacity: 1}}
-                className={`min-w-[70vw] flex flex-col justify-between items-center ${fixedTransformCenter}
+                className={`min-w-[70vw] flex flex-col justify-between items-center fixed translate-center
                 bg-dark/90 dark:bg-light/75 rounded-lg backdrop-blur-md py-32 z-30
             `}>
-                <nav className={`${flexCenter}  flex-col`}>
+                <nav className={`flex-center  flex-col`}>
                     <CustomMobileLink to='/' title='Home' className='' toggle={handleMenuIsOpen}/>
                     <CustomMobileLink to='/About' title='About' className='' toggle={handleMenuIsOpen}/>
                     <CustomMobileLink to='/Projects' title='Projects' className='' toggle={handleMenuIsOpen}/>
                 </nav>
                 
-                <nav className={`${flexCenter} flex-wrap mt-3`}>
+                <nav className={`flex-center flex-wrap mt-3`}>
                     <CustomA href='https://www.linkedin.com/in/ido-band/' icon={<LinkedInIcon className={''}/>} className='mr-3'/>
                     <CustomA href='mailto:ido.bandd@gmail.com' icon={<GmailIcon className={''}/>} className='mx-3'/>
                     <CustomA href='https://github.com/IdoBand' icon={<GithubIcon className={'text-light dark:text-dark'}/>} className='ml-3'/>
                     <button 
                         onClick={ () => setMode(mode === 'dark' ? 'light' : 'dark') }
-                        className={`${flexCenter} ml-5 p-1 rounded-full 
+                        className={`flex-center ml-5 p-1 rounded-full 
                         ${mode === 'light' ? 'bg-dark text-light' : 'bg-light text-dark'}
                         `}
                         >

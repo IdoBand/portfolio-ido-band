@@ -32,12 +32,13 @@ const techStackChild = {
 }
 const TechStack = () => {
   return (
-        <motion.div className='flex justify-start items-center w-full font-medium lg:justify-center xs:flex-wrap'
+        <motion.div className='flex justify-start items-center w-full whitespace-nowrap ml-3 font-semibold tracking-wider flex-wrap lg:justify-center'
             variants={techStackContainer}
             initial="initial"
             animate="animate"
             >
-            Tech Stack |
+            TECH STACK |
+            <div className='flex flex-wrap'>
             {Icons.map((icon, idx) => {
                 return <motion.span 
                     key={idx}
@@ -47,6 +48,7 @@ const TechStack = () => {
                         {icon}
                     </motion.span>
             })}
+            </div>
         </motion.div>
   )
 }
