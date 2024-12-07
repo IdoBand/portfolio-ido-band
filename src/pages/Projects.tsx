@@ -137,21 +137,21 @@ const Projects = () => {
         <main className='page-layout'>
             <AnimatedText text='Projects' className='page-header'/>
             <section className='grid grid-cols-12 gap-16 xl:gap-x-16 lg:gap-x-8 md:gap-y-16 md:gap-x-0'>
-                <div className='col-span-12'>
+                 <div className='col-span-12'>
                     <FeaturedProject 
-                        type='frontend'
-                        title='2bPrecise Replica'
-                        summary={`Recreation of a cool and interactive homepage design.`}
+                        type='fullstack'
+                        title='Private Garden'
+                        summary={`This app helps you monitor your own garden, create a timeline for each plant, identify plants by uploading images and more...`}
                         about={
                             {
-                            frontend: 'React, TypeScript, Vite, gsap',
-                            backend: '',
-                            database: ''
+                            frontend: 'React, SCSS, Vite, TypeScript',
+                            backend: 'AWS EC2 Ubuntu & S3, Github Actions CI/CD, Node.js, Express, TypeScript',
+                            database: 'MongoDB Atlas'
                             }
                         }
-                        img={twobpImg}
-                        link='https://twobprecise-replica.onrender.com/'
-                        githubLink='https://github.com/IdoBand/2bprecise-replica'
+                        img={pgImg}
+                        link='https://private-garden.onrender.com/'
+                        githubLink='https://github.com/IdoBand/private-garden'
                     />
                 </div>
                 <div className='col-span-12'>
@@ -173,22 +173,22 @@ const Projects = () => {
                 </div>
                 <div className='col-span-12'>
                     <FeaturedProject 
-                        type='fullstack'
-                        title='Private Garden'
-                        summary={`This app helps you monitor your own garden, create a timeline for each plant, identify plants by uploading images and more...`}
+                        type='frontend'
+                        title='2bPrecise Replica'
+                        summary={`Recreation of a cool and interactive homepage design.`}
                         about={
                             {
-                            frontend: 'React, SCSS, Vite, TypeScript',
-                            backend: 'AWS - EC2 Ubuntu, Node.js, Express, TypeScript',
-                            database: 'MongoDB Atlas'
+                            frontend: 'React, TypeScript, Vite, gsap',
+                            backend: '',
+                            database: ''
                             }
                         }
-                        img={pgImg}
-                        link='https://private-garden.onrender.com/'
-                        githubLink='https://github.com/IdoBand/private-garden'
+                        img={twobpImg}
+                        link='https://twobprecise-replica.onrender.com/'
+                        githubLink='https://github.com/IdoBand/2bprecise-replica'
                     />
                 </div>
-                <div className='col-span-12'>
+                {/* <div className='col-span-12'>
                     <FeaturedProject 
                         type='fullstack'
                         title='Wordle'
@@ -204,7 +204,7 @@ const Projects = () => {
                         link='https://wordle-game-lgye.onrender.com/'
                         githubLink='https://github.com/IdoBand/wordle'
                     />
-                </div>
+                </div> */}
             </section>
         </main>
 
