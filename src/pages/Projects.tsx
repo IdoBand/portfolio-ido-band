@@ -7,35 +7,25 @@ import pgImg from '/projects/private-garden.jpg'
 import wordleImg from '/projects/wordle.jpg'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { motion } from 'framer-motion'
-interface FeaturedProjectProps {
-    type: 'frontend' | 'fullstack'
-    title: string
-    summary: string
-    about: { 
-        frontend: string
-        backend: string
-        database: string
-    }
-    img: string
-    link: string
-    githubLink: string
+
+const Projects = () => {
+    return (
+          <main className='page-layout'>
+              <AnimatedText text='Projects' className='page-header'/>
+              <div className='flex flex-col gap-16'>  
+                  {PROJECTS.filter(project => project.show).map(project => (
+                      <ProjectCard {...project} key={project.title} />
+                  ))}
+              </div>
+          </main>
+    )
 }
 
-const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: FeaturedProjectProps) => {
-    const { firstIntersection, htmlElementRef } = useIntersectionObserver()
-    const ProjectCardContent = {
-        initial: {
-            opacity: 0,
-        },
-        animate: {
-        opacity: firstIntersection ? 1 : 0,
-            transition: {
-                duration: 0.3,
-                delay: 0.6
-            }
-        }
-    }
+export default Projects
 
+
+const ProjectCard = ({ type, title, summary, about, img, link, githubLink }: ProjectCardProps) => {
+    const { firstIntersection, htmlElementRef } = useIntersectionObserver()
 
     return (
         <motion.article 
@@ -51,14 +41,14 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
                 }
             }}
             ref={htmlElementRef} 
-                className='relative bg-light before:absolute before:w-[100%] before:h-[103%] before:left-3  before:top-1 before:bg-dark
-                before:rounded-3xl light:before:bg-light md:before:h-[102%]
+                className='
+                relative rounded-3xl
+                before:absolute before:w-[100%] before:h-[103%] before:left-3  before:top-1 before:bg-dark
+                before:rounded-3xl md:before:h-[102%]
             '>
                 <motion.section
-                initial="initial"
-                animate="animate"
-                variants={ProjectCardContent}
-                className='w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl p-12
+                    className='
+                            w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl p-8
                             border border-solid border-dark dark:border-light
                             bg-light shadow-2xl
                             dark:bg-dark dark:text-light
@@ -66,8 +56,9 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
                         '>
                 <Link to={link} 
                         target='_blank' 
-                        className='w-1/2 cursor-pointer overflow-hidden rounded-lg
-                        lg:w-full overflow-x-hidden
+                        className='
+                            w-1/2 cursor-pointer overflow-hidden rounded-lg
+                            lg:w-full overflow-x-hidden
                         '>
                     <motion.img
                         whileHover={{
@@ -87,7 +78,7 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
                         {type === 'fullstack' ? 'Full Stack' : 'Frontend'} Project
                     </span>
                     <Link to={link} target='_blank' className='hover:underline hover:underline-offset-2'>
-                        <h2 className='text-dark my-2 w-full text-left text-4xl font-bold sm:text-sm'>{title}</h2>
+                        <h2 className='text-dark my-2 w-full text-left text-4xl font-bold sm:text-xl'>{title}</h2>
                     </Link>
                     <p className='my-2 font-medium text-dark dark:text-light
                         sm:text-sm
@@ -114,11 +105,12 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
                         >
                         <Link to={link} 
                             target='_blank' 
-                            className='ml-4 rounded-lg bg-dark text-light text-lg 
-                                            p-2 px-6 font-semi-bold
-                                            dark:bg-light dark:text-dark
-                                            sm:px-4 sm:text-base
-                                            '
+                            className='
+                                ml-4 rounded-lg bg-dark text-light text-lg 
+                                p-2 px-6 font-semi-bold
+                                dark:bg-light dark:text-dark
+                                sm:px-4 sm:text-base
+                                '
                                 >
                                 Visit Project
                         </Link>
@@ -130,84 +122,76 @@ const FeaturedProject = ({type, title, summary, about, img, link, githubLink}: F
     )
 }
 
-const Projects = () => {
-
-
-  return (
-        <main className='page-layout'>
-            <AnimatedText text='Projects' className='page-header'/>
-            <section className='grid grid-cols-12 gap-16 xl:gap-x-16 lg:gap-x-8 md:gap-y-16 md:gap-x-0'>
-                 <div className='col-span-12'>
-                    <FeaturedProject 
-                        type='fullstack'
-                        title='Private Garden'
-                        summary={`This app helps you monitor your own garden, create a timeline for each plant, identify plants by uploading images and more...`}
-                        about={
-                            {
-                            frontend: 'React, SCSS, Vite, TypeScript',
-                            backend: 'AWS EC2 Ubuntu & S3, Github Actions CI/CD, Node.js, Express, TypeScript',
-                            database: 'MongoDB Atlas'
-                            }
-                        }
-                        img={pgImg}
-                        link='https://private-garden.onrender.com/'
-                        githubLink='https://github.com/IdoBand/private-garden'
-                    />
-                </div>
-                <div className='col-span-12'>
-                    <FeaturedProject 
-                        type='fullstack'
-                        title='Hour Tracker'
-                        summary={`An app that helps you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`}
-                        about={
-                            {
-                            frontend: 'Next.js 13, React, TypeScript, Tailwind CSS',
-                            backend: 'Next.js 13',
-                            database: 'PostgresSQL'
-                            }
-                        }
-                        img={htImg}
-                        link='https://hour-tracker.vercel.app/'
-                        githubLink='https://github.com/IdoBand/hour-tracker'
-                    />
-                </div>
-                <div className='col-span-12'>
-                    <FeaturedProject 
-                        type='frontend'
-                        title='2bPrecise Replica'
-                        summary={`Recreation of a cool and interactive homepage design.`}
-                        about={
-                            {
-                            frontend: 'React, TypeScript, Vite, gsap',
-                            backend: '',
-                            database: ''
-                            }
-                        }
-                        img={twobpImg}
-                        link='https://twobprecise-replica.onrender.com/'
-                        githubLink='https://github.com/IdoBand/2bprecise-replica'
-                    />
-                </div>
-                {/* <div className='col-span-12'>
-                    <FeaturedProject 
-                        type='fullstack'
-                        title='Wordle'
-                        summary={`a word-guessing game where players attempt to guess a hidden five-letter word by making multiple guesses and receiving feedback on the correctness of each guess.`}
-                        about={
-                            {
-                            frontend: 'React, Tailwind CSS, Vite, TypeScript',
-                            backend: 'AWS - EC2 Ubuntu, Node.js, Express, TypeScript',
-                            database: 'PostgresSQL'
-                            }
-                        }
-                        img={wordleImg}
-                        link='https://wordle-game-lgye.onrender.com/'
-                        githubLink='https://github.com/IdoBand/wordle'
-                    />
-                </div> */}
-            </section>
-        </main>
-
-  )
+type ProjectCardProps = {
+    show: boolean
+    type: 'frontend' | 'fullstack'
+    title: string
+    summary: string
+    about: { 
+        frontend: string
+        backend: string
+        database: string
+    }
+    img: string
+    link: string
+    githubLink: string
 }
-export default Projects
+
+const PROJECTS: ProjectCardProps[] = [
+    {
+        show: true,
+        type: 'fullstack',
+        title: 'Private Garden',
+        summary: `This app helps you monitor your own garden, create a timeline for each plant, identify plants by uploading images and more...`,
+        about: {
+            frontend: 'React, SCSS, Vite, TypeScript',
+            backend: 'AWS EC2 Ubuntu & S3, Github Actions CI/CD, Node.js, Express, TypeScript',
+            database: 'MongoDB Atlas'
+        },
+        img: pgImg,
+        link: 'https://private-garden.onrender.com/',
+        githubLink: 'https://github.com/IdoBand/private-garden',
+    },
+    {
+        show: true,
+        type: 'fullstack',
+        title: 'Hour Tracker',
+        summary: `An app that helps you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`,
+        about: {
+            frontend: 'Next.js 13, React, TypeScript, Tailwind CSS',
+            backend: 'Next.js 13',
+            database: 'PostgresSQL'
+        },
+        img: htImg,
+        link: 'https://hour-tracker.vercel.app/',
+        githubLink: 'https://github.com/IdoBand/hour-tracker',
+    },
+    {
+        show: true,
+        type: 'frontend',
+        title: '2bPrecise Replica',
+        summary: `Recreation of a cool and interactive homepage design.`,
+        about: {
+            frontend: 'React, TypeScript, Vite, gsap',
+            backend: '',
+            database: ''
+        },
+        img: twobpImg,
+        link: 'https://twobprecise-replica.onrender.com/',
+        githubLink: 'https://github.com/IdoBand/2bprecise-replica',
+    },
+    {
+        show: false,
+        type: 'fullstack',
+        title: 'Wordle',
+        summary: `A word-guessing game where players attempt to guess a hidden five-letter word by making multiple guesses and receiving feedback on the correctness of each guess.`,
+        about: {
+            frontend: 'React, Tailwind CSS, Vite, TypeScript',
+            backend: 'AWS - EC2 Ubuntu, Node.js, Express, TypeScript',
+            database: 'PostgresSQL'
+        },
+        img: wordleImg,
+        link: 'https://wordle-game-lgye.onrender.com/',
+        githubLink: 'https://github.com/IdoBand/wordle',
+    }
+];

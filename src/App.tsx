@@ -1,8 +1,7 @@
-import Curtain from "./components/Curtain"
+import Curtain from "./components/Curtain/Curtain"
 function App() {
   return (
     <Curtain />
-    
   )
 }
 
