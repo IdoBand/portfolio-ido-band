@@ -1,13 +1,14 @@
-import { CssIcon, HtmlIcon, JavaScriptIcon, ReactIcon, SassIcon, TypeScriptIcon, TailwindIcon } from './Icons'
+import { CssIcon, HtmlIcon, JavaScriptIcon, ReactIcon, SassIcon, TypeScriptIcon, TailwindIcon, CSharpIcon } from './Icons'
 import { motion } from 'framer-motion'
 const Icons = [
-    <HtmlIcon className='mx-3' key={'HtmlIcon'} />,
-    <CssIcon className='mx-3' key={'CssIcon'} />,
-    <TypeScriptIcon className='mx-3' key={'TypeScriptIcon'} />,
-    <ReactIcon className='mx-3' key={'ReactIcon'} />,
-    <JavaScriptIcon className='mx-3' key={'JavaScriptIcon'} />,
-    <SassIcon className='mx-3' key={'SassIcon'} />,
-    <TailwindIcon className='w-8 mx-3' key={'TailwindIcon'} />,
+    <HtmlIcon />,
+    <CssIcon />,
+    <TypeScriptIcon />,
+    <ReactIcon />,
+    <JavaScriptIcon />,
+    <SassIcon />,
+    <TailwindIcon />,
+    <CSharpIcon />
 ]
 const techStackContainer = {
     initial: {},
@@ -39,15 +40,15 @@ const TechStack = () => {
             >
             TECH STACK |
             <div className='flex flex-wrap'>
-            {Icons.map((icon, idx) => {
-                return <motion.span 
-                    key={idx}
-                    variants={techStackChild}
-                    className='md:py-2'
-                    >
-                        {icon}
-                    </motion.span>
-            })}
+                {Icons.map((icon, idx) => {
+                    return <motion.span 
+                        key={idx}
+                        variants={techStackChild}
+                        className='md:py-2 mx-3'
+                        >
+                            {icon}
+                        </motion.span>
+                })}
             </div>
         </motion.div>
   )
