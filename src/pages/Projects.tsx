@@ -5,6 +5,7 @@ import htImg from '/projects/hour-tracker.jpg'
 import twobpImg from '/projects/two-b-precise.jpg'
 import pgImg from '/projects/private-garden.jpg'
 import wordleImg from '/projects/wordle.jpg'
+import cssQuidditchGameImg from '/projects/css-quidditch-game.jpg'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { motion } from 'framer-motion'
 
@@ -154,20 +155,6 @@ const PROJECTS: ProjectCardProps[] = [
     },
     {
         show: true,
-        type: 'fullstack',
-        title: 'Hour Tracker',
-        summary: `An app that helps you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`,
-        about: {
-            frontend: 'Next.js 13, React, TypeScript, Tailwind CSS',
-            backend: 'Next.js 13',
-            database: 'PostgresSQL'
-        },
-        img: htImg,
-        link: 'https://hour-tracker.vercel.app/',
-        githubLink: 'https://github.com/IdoBand/hour-tracker',
-    },
-    {
-        show: true,
         type: 'frontend',
         title: '2bPrecise Replica',
         summary: `Recreation of a cool and interactive homepage design.`,
@@ -179,6 +166,34 @@ const PROJECTS: ProjectCardProps[] = [
         img: twobpImg,
         link: 'https://twobprecise-replica.onrender.com/',
         githubLink: 'https://github.com/IdoBand/2bprecise-replica',
+    },
+    {
+        show: true,
+        type: 'frontend',
+        title: 'CSS Quidditch Game',
+        summary: `a short game to practice 3D in CSS`,
+        about: {
+            frontend: 'React, TypeScript, Vite, SCSS',
+            backend: '',
+            database: ''
+        },
+        img: cssQuidditchGameImg,
+        link: 'https://css-quiditch-game.onrender.com/',
+        githubLink: 'https://github.com/IdoBand/css-quiditch-game',
+    },
+    {
+        show: true,
+        type: 'fullstack',
+        title: 'Hour Tracker',
+        summary: `An app that helps you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`,
+        about: {
+            frontend: 'Next.js 13, React, TypeScript, Tailwind CSS',
+            backend: 'Next.js 13',
+            database: 'PostgresSQL'
+        },
+        img: htImg,
+        link: 'https://hour-tracker.vercel.app/',
+        githubLink: 'https://github.com/IdoBand/hour-tracker',
     },
     {
         show: false,
