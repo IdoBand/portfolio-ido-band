@@ -9,6 +9,15 @@ import cssQuidditchGameImg from '/projects/css-quidditch-game.jpg'
 import useIntersectionObserver from '../hooks/useIntersectionObserver'
 import { motion } from 'framer-motion'
 
+const PROJECT_TYPE = {
+    frontend: 'Frontend Project' ,
+    fullstack:  'Full Stack Project' ,
+    AI: 'AI Project' 
+} as const
+
+type ProjectType = typeof PROJECT_TYPE[keyof typeof PROJECT_TYPE]
+
+
 const Projects = () => {
     return (
           <main className='page-layout'>
@@ -25,7 +34,7 @@ const Projects = () => {
 export default Projects
 
 
-const ProjectCard = ({ type, title, summary, about, img, link, githubLink }: ProjectCardProps) => {
+const ProjectCard = ({ type, title, summary, about, img, video, link, githubLink }: ProjectCardProps) => {
     const { firstIntersection, htmlElementRef } = useIntersectionObserver()
 
     return (
@@ -55,32 +64,78 @@ const ProjectCard = ({ type, title, summary, about, img, link, githubLink }: Pro
                             dark:bg-dark dark:text-light
                             lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4
                         '>
-                <Link to={link} 
-                        target='_blank' 
-                        className='
-                            w-1/2 cursor-pointer overflow-hidden rounded-lg
-                            lg:w-full overflow-x-hidden
-                        '>
-                    <motion.img
-                        whileHover={{
-                            scale: 1.05,
-                            transition: {
-                                duration: 0.4
-                            }
-                        }}
-                        src={img}
-                        alt={title}
-                        className='w-full h-auto' />
-                </Link>
+                {link ? (
+                    <Link to={link}
+                            target='_blank'
+                            className='
+                                w-1/2 cursor-pointer overflow-hidden rounded-lg
+                                lg:w-full overflow-x-hidden
+                            '>
+                        {video ? (
+                            <motion.video
+                                whileHover={{
+                                    scale: 1.05,
+                                    transition: {
+                                        duration: 0.4
+                                    }
+                                }}
+                                src={video}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className='w-full h-auto'
+                            />
+                        ) : (
+                            <motion.img
+                                whileHover={{
+                                    scale: 1.05,
+                                    transition: {
+                                        duration: 0.4
+                                    }
+                                }}
+                                src={img}
+                                alt={title}
+                                className='w-full h-auto'
+                            />
+                        )}
+                    </Link>
+                ) : (
+                    <div className='
+                        w-1/2 overflow-hidden rounded-lg
+                        lg:w-full overflow-x-hidden
+                    '>
+                        {video ? (
+                            <video
+                                src={video}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className='w-full h-auto'
+                            />
+                        ) : (
+                            <img
+                                src={img}
+                                alt={title}
+                                className='w-full h-auto'
+                            />
+                        )}
+                    </div>
+                )}
                 <div
                     className='w-1/2 flex flex-col items-start justify-between pl-6 lg:w-full lg:pl-0 lg:pt-3
                 '>
-                    <span className={`font-medium text-xl xs:text-base ${type === 'fullstack' ? 'text-primary' : 'text-secondary'}`}>
-                        {type === 'fullstack' ? 'Full Stack' : 'Frontend'} Project
+                    <span className={`font-medium text-xl xs:text-base ${type === PROJECT_TYPE.fullstack ? 'text-primary' : type === PROJECT_TYPE.AI ? 'text-blue-500' : 'text-secondary'}`}>
+                        {type}
                     </span>
-                    <Link to={link} target='_blank' className='hover:underline hover:underline-offset-2'>
+                    {link ? (
+                        <Link to={link} target='_blank' className='hover:underline hover:underline-offset-2'>
+                            <h2 className='text-dark my-2 w-full text-left text-4xl font-bold sm:text-xl'>{title}</h2>
+                        </Link>
+                    ) : (
                         <h2 className='text-dark my-2 w-full text-left text-4xl font-bold sm:text-xl'>{title}</h2>
-                    </Link>
+                    )}
                     <p className='my-2 font-medium text-dark dark:text-light
                         sm:text-sm
                     '>
@@ -90,32 +145,37 @@ const ProjectCard = ({ type, title, summary, about, img, link, githubLink }: Pro
                         sm:text-sm'>
                             {about.frontend && <span className=''><b>Frontend:</b>{` ${about.frontend}`}</span>}<br />
                             {about.backend && <span className=''><b>Backend:</b>{` ${about.backend}`}</span>}<br />
-                            {about.database && <span className=''><b>Database:</b>{` ${about.database}`}</span>}
+                            {about.database && <span className=''><b>Database:</b>{` ${about.database}`}</span>}<br />
+                            {about.tools && <span className=''><b>Tools:</b>{` ${about.tools}`}</span>}
                     </p>
                     <div className='mt-2 flex items-center'>
-                        <Link to={githubLink} target='_blank' className='w-10'><GithubIcon className=''/></Link>
-                        <motion.div
-                            whileHover={{ scale: 1.1,
-                            transition: {
-                                duration: 0.5,
-                                type: "spring",
-                                stiffness: 1000,
-                                damping: 15,
-                            }
-                            }}
-                        >
-                        <Link to={link} 
-                            target='_blank' 
-                            className='
-                                ml-4 rounded-lg bg-dark text-light text-lg 
-                                p-2 px-6 font-semi-bold
-                                dark:bg-light dark:text-dark
-                                sm:px-4 sm:text-base
-                                '
-                                >
-                                Visit Project
-                        </Link>
-                        </motion.div>
+                        {githubLink && (
+                            <Link to={githubLink} target='_blank' className='w-10'><GithubIcon className=''/></Link>
+                        )}
+                        {link && (
+                            <motion.div
+                                whileHover={{ scale: 1.1,
+                                transition: {
+                                    duration: 0.5,
+                                    type: "spring",
+                                    stiffness: 1000,
+                                    damping: 15,
+                                }
+                                }}
+                            >
+                            <Link to={link}
+                                target='_blank'
+                                className='
+                                    ml-4 rounded-lg bg-dark text-light text-lg
+                                    p-2 px-6 font-semi-bold
+                                    dark:bg-light dark:text-dark
+                                    sm:px-4 sm:text-base
+                                    '
+                                    >
+                                    Visit Project
+                            </Link>
+                            </motion.div>
+                        )}
                     </div>
                 </div>
             </motion.section>
@@ -125,23 +185,50 @@ const ProjectCard = ({ type, title, summary, about, img, link, githubLink }: Pro
 
 type ProjectCardProps = {
     show: boolean
-    type: 'frontend' | 'fullstack'
+    type: ProjectType
     title: string
     summary: string
-    about: { 
-        frontend: string
-        backend: string
-        database: string
+    about: {
+        frontend?: string
+        backend?: string
+        database?: string
+        tools?: string
     }
-    img: string
-    link: string
-    githubLink: string
+    img?: string
+    video?: string
+    link?: string
+    githubLink?: string
 }
 
 const PROJECTS: ProjectCardProps[] = [
     {
         show: true,
-        type: 'fullstack',
+        type: PROJECT_TYPE.AI,
+        title: 'Revit MCP',
+        summary: `An MCP (Model Context Protocol) server that connects to Autodesk Revit, enabling architects, engineers and designers to automate BIM workflows through natural language. \n Demonstrated capabilities include opening floor plans across 12 levels, applying view templates, creating sheets, and exporting quantity schedules—all accomplished in minutes without manual intervention. The server allows Claude to generate and execute Revit API code instantly, streamlining modeling, filtering, and parameter management tasks for advanced Revit users.`,
+        about: {
+            tools: 'C#, .NET Framework 4.8, .NET Core 8.0, Revit API, MCP Protocol, '
+        },
+        video: '/projects/mcp.mov',
+        link: 'https://www.linkedin.com/feed/update/urn:li:activity:7384090711794733056/'
+    },
+    {
+        show: true,
+        type: PROJECT_TYPE.fullstack,
+        title: 'Realistix',
+        summary: `Realistix simplifies the path from BIM to visualization by connecting Autodesk Revit directly with Google’s AI rendering models. It lets designers generate professional images and videos from structured Revit views while keeping layouts, aspect ratios, and project outputs consistent and organized.`,
+        about: {
+            frontend: 'React, SCSS, Vite, TypeScript',
+            backend: 'AWS EC2 Ubuntu & S3, Github Actions CI/CD, Node.js, Express, TypeScript',
+            database: 'MongoDB Atlas'
+        },
+        video: '/projects/realistix-blend.mp4',
+        link: 'https://www.realistix.co/',
+        githubLink: 'https://github.com/IdoBand/private-garden',
+    },
+    {
+        show: false,
+        type: PROJECT_TYPE.fullstack,
         title: 'Private Garden',
         summary: `This app helps you monitor your own garden, create a timeline for each plant, identify plants by uploading images and more...`,
         about: {
@@ -155,7 +242,7 @@ const PROJECTS: ProjectCardProps[] = [
     },
     {
         show: true,
-        type: 'frontend',
+        type: PROJECT_TYPE.frontend,
         title: '2bPrecise Replica',
         summary: `Recreation of a cool and interactive homepage design.`,
         about: {
@@ -169,7 +256,7 @@ const PROJECTS: ProjectCardProps[] = [
     },
     {
         show: true,
-        type: 'frontend',
+        type: PROJECT_TYPE.frontend,
         title: 'CSS Quidditch Game',
         summary: `a short game to practice 3D in CSS`,
         about: {
@@ -182,8 +269,8 @@ const PROJECTS: ProjectCardProps[] = [
         githubLink: 'https://github.com/IdoBand/css-quiditch-game',
     },
     {
-        show: true,
-        type: 'fullstack',
+        show: false,
+        type: PROJECT_TYPE.fullstack,
         title: 'Hour Tracker',
         summary: `An app that helps you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`,
         about: {
@@ -197,7 +284,7 @@ const PROJECTS: ProjectCardProps[] = [
     },
     {
         show: false,
-        type: 'fullstack',
+        type: PROJECT_TYPE.fullstack,
         title: 'Wordle',
         summary: `A word-guessing game where players attempt to guess a hidden five-letter word by making multiple guesses and receiving feedback on the correctness of each guess.`,
         about: {

@@ -1,4 +1,4 @@
-import homePortfolioImage from '/homePortfolioImage.png'
+import homePortfolioImage from '/newPortfolioImage.png'
 import AnimatedText from '../components/AnimatedText'
 import { Link } from 'react-router-dom'
 import { LinkArrow } from '../components/Icons'
@@ -26,8 +26,8 @@ export default function Home() {
                             lg:w-max
                         '/>
                         <p className='my-4 text-xl font-medium whitespace-normal md:w-[calc(100vw-25px)]'>
-                        As a software developer, I am dedicated to turning ideas into innovative and useful applications. 
-                        Check out my latest projects, demonstrating my expertise in web development and the Revit API.
+                        I currently work as a software developer in the Civil Engineering industry, 
+                        Check out my latest projects, demonstrating my expertise in fullstack web development and the Revit API.
                         </p>
                         <TechStack />
                         <div className='flex items-center self-start my-4 lg:self-center'>
@@ -40,9 +40,9 @@ export default function Home() {
                                 transition-all duration-150
                             `}
                             >
-                                Contact <LinkArrow className='w-6 ml-1 lg:w-5'/>
+                                Contact Me
                             </Link>
-                            <Link to={'mailto:ido.bandd@gmail.com'} target={"_blank"}
+                            <Link to={'https://www.linkedin.com/in/ido-band/'} target={"_blank"}
                                 className="flex ml-4 text-lg font-medium underline">
                                     Linkedin <LinkArrow className='w-6 ml-1 lg:w-5'/>
                             </Link>
