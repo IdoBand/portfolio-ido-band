@@ -1,14 +1,10 @@
 import AnimatedText from '../components/AnimatedText'
-import { Link } from 'react-router-dom'
-import { GithubIcon } from '../components/Icons'
 import htImg from '/projects/hour-tracker.jpg'
 import twobpImg from '/projects/two-b-precise.jpg'
 import pgImg from '/projects/private-garden.jpg'
 import wordleImg from '/projects/wordle.jpg'
 import cssQuidditchGameImg from '/projects/css-quidditch-game.jpg'
-import useIntersectionObserver from '../hooks/useIntersectionObserver'
-import { motion } from 'framer-motion'
-
+import ProjectCard from '../components/ProjectCard'
 const PROJECT_TYPE = {
     frontend: 'Frontend Project' ,
     fullstack:  'Full Stack Project' ,
@@ -22,166 +18,40 @@ const Projects = () => {
     return (
           <main className='page-layout'>
               <AnimatedText text='Projects' className='page-header'/>
-              <div className='flex flex-col gap-16'>  
-                  {PROJECTS.filter(project => project.show).map(project => (
-                      <ProjectCard {...project} key={project.title} />
-                  ))}
+              <div className='flex flex-col gap-16'>
+                  {PROJECTS.filter(project => project.show).map(project => {
+                      const color =
+                          project.type === PROJECT_TYPE.fullstack
+                              ? 'text-primary'
+                              : project.type === PROJECT_TYPE.AI
+                              ? 'text-blue-500'
+                              : 'text-secondary'
+
+                      return (
+                          <ProjectCard key={project.title}>
+                              <ProjectCard.Media
+                                  img={project.img}
+                                  video={project.video}
+                                  link={project.link}
+                                  title={project.title}
+                              />
+
+                              <ProjectCard.Content>
+                                  <ProjectCard.Type type={project.type} color={color} />
+                                  <ProjectCard.Title title={project.title} link={project.link} />
+                                  <ProjectCard.Summary>{project.summary}</ProjectCard.Summary>
+                                  <ProjectCard.About about={project.about} />
+                                  <ProjectCard.Actions githubLink={project.githubLink} link={project.link} />
+                              </ProjectCard.Content>
+                          </ProjectCard>
+                      )
+                  })}
               </div>
           </main>
     )
 }
 
 export default Projects
-
-
-const ProjectCard = ({ type, title, summary, about, img, video, link, githubLink }: ProjectCardProps) => {
-    const { firstIntersection, htmlElementRef } = useIntersectionObserver()
-
-    return (
-        <motion.article 
-            initial={{
-                opacity: 0,
-                y: 100,
-            }}
-            animate={{
-                opacity: firstIntersection ? 1 : 0,
-                y: firstIntersection ? 0 : 100,
-                transition: {
-                    duration: 0.6
-                }
-            }}
-            ref={htmlElementRef} 
-                className='
-                relative rounded-3xl
-                before:absolute before:w-[100%] before:h-[103%] before:left-3  before:top-1 before:bg-dark
-                before:rounded-3xl md:before:h-[102%]
-            '>
-                <motion.section
-                    className='
-                            w-full flex items-center justify-between relative rounded-br-2xl rounded-3xl p-8
-                            border border-solid border-dark dark:border-light
-                            bg-light shadow-2xl
-                            dark:bg-dark dark:text-light
-                            lg:flex-col lg:p-8 xs:rounded-2xl xs:rounded-br-3xl xs:p-4
-                        '>
-                {link ? (
-                    <Link to={link}
-                            target='_blank'
-                            className='
-                                w-1/2 cursor-pointer overflow-hidden rounded-lg
-                                lg:w-full overflow-x-hidden
-                            '>
-                        {video ? (
-                            <motion.video
-                                whileHover={{
-                                    scale: 1.05,
-                                    transition: {
-                                        duration: 0.4
-                                    }
-                                }}
-                                src={video}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className='w-full h-auto'
-                            />
-                        ) : (
-                            <motion.img
-                                whileHover={{
-                                    scale: 1.05,
-                                    transition: {
-                                        duration: 0.4
-                                    }
-                                }}
-                                src={img}
-                                alt={title}
-                                className='w-full h-auto'
-                            />
-                        )}
-                    </Link>
-                ) : (
-                    <div className='
-                        w-1/2 overflow-hidden rounded-lg
-                        lg:w-full overflow-x-hidden
-                    '>
-                        {video ? (
-                            <video
-                                src={video}
-                                autoPlay
-                                loop
-                                muted
-                                playsInline
-                                className='w-full h-auto'
-                            />
-                        ) : (
-                            <img
-                                src={img}
-                                alt={title}
-                                className='w-full h-auto'
-                            />
-                        )}
-                    </div>
-                )}
-                <div
-                    className='w-1/2 flex flex-col items-start justify-between pl-6 lg:w-full lg:pl-0 lg:pt-3
-                '>
-                    <span className={`font-medium text-xl xs:text-base ${type === PROJECT_TYPE.fullstack ? 'text-primary' : type === PROJECT_TYPE.AI ? 'text-blue-500' : 'text-secondary'}`}>
-                        {type}
-                    </span>
-                    {link ? (
-                        <Link to={link} target='_blank' className='hover:underline hover:underline-offset-2'>
-                            <h2 className='text-dark my-2 w-full text-left text-4xl font-bold sm:text-xl'>{title}</h2>
-                        </Link>
-                    ) : (
-                        <h2 className='text-dark my-2 w-full text-left text-4xl font-bold sm:text-xl'>{title}</h2>
-                    )}
-                    <p className='my-2 font-medium text-dark dark:text-light
-                        sm:text-sm
-                    '>
-                        {summary}
-                    </p>
-                    <p className='my-2 text-dark dark:text-light
-                        sm:text-sm'>
-                            {about.frontend && <span className=''><b>Frontend:</b>{` ${about.frontend}`}</span>}<br />
-                            {about.backend && <span className=''><b>Backend:</b>{` ${about.backend}`}</span>}<br />
-                            {about.database && <span className=''><b>Database:</b>{` ${about.database}`}</span>}<br />
-                            {about.tools && <span className=''><b>Tools:</b>{` ${about.tools}`}</span>}
-                    </p>
-                    <div className='mt-2 flex items-center'>
-                        {githubLink && (
-                            <Link to={githubLink} target='_blank' className='w-10'><GithubIcon className=''/></Link>
-                        )}
-                        {link && (
-                            <motion.div
-                                whileHover={{ scale: 1.1,
-                                transition: {
-                                    duration: 0.5,
-                                    type: "spring",
-                                    stiffness: 1000,
-                                    damping: 15,
-                                }
-                                }}
-                            >
-                            <Link to={link}
-                                target='_blank'
-                                className='
-                                    ml-4 rounded-lg bg-dark text-light text-lg
-                                    p-2 px-6 font-semi-bold
-                                    dark:bg-light dark:text-dark
-                                    sm:px-4 sm:text-base
-                                    '
-                                    >
-                                    Visit Project
-                            </Link>
-                            </motion.div>
-                        )}
-                    </div>
-                </div>
-            </motion.section>
-        </motion.article>
-    )
-}
 
 type ProjectCardProps = {
     show: boolean
