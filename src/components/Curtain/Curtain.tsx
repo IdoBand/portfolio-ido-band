@@ -23,7 +23,7 @@ const Curtain = () => {
             {LINKS[currentPage].page}
         </section>
         <button
-            className='toggle-menu-button text-3xl text-light flex-center'
+            className={`toggle-menu-button text-3xl text-light flex-center ${!isMenuOpen && currentPage === 0 ? 'heartBeat60' : ''}`}
             onClick={() => setIsMenuOpen(prev => !prev)}
             >
         </button>
