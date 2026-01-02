@@ -1,5 +1,26 @@
 $gradientBlueGreen: linear-gradient(90deg, rgb(38, 247, 197) 0%, rgb(136, 149, 250) 100%);
 
+@keyframes heartBeat60 {
+  0% {
+    transform: translateX(-50%) scale(1);
+  }
+  10% {
+    transform: translateX(-50%) scale(1.08);
+  }
+  20% {
+    transform: translateX(-50%) scale(1);
+  }
+  30% {
+    transform: translateX(-50%) scale(1.12);
+  }
+  40% {
+    transform: translateX(-50%) scale(1);
+  }
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+}
+
 #curtain-content-container {
     position: relative;
     width: 100%;
@@ -21,18 +42,34 @@ $gradientBlueGreen: linear-gradient(90deg, rgb(38, 247, 197) 0%, rgb(136, 149, 2
     transform: translateX(-50%);
     z-index: 30;
     border-radius: 50%;
-    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
     outline: none;
     transition: all 0.4s ease;
+
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow:
+        0 10px 25px rgba(100, 160, 200, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.6);
 }
+
+.heartBeat60 {
+    animation: heartBeat60 1s infinite ease-in-out;
+}
+
 .toggle-menu-button::before {
     content: 'IB';
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: $gradientBlueGreen;
-    box-shadow: 0 0 4rem rgba(0 0 0 / 45%);
+    color: #10222a;
+    background: linear-gradient(
+    145deg,
+    #ffffff,
+    #d9f2fa
+    );
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -107,7 +144,7 @@ $gradientBlueGreen: linear-gradient(90deg, rgb(38, 247, 197) 0%, rgb(136, 149, 2
     border-radius: 10px;
     aspect-ratio: 16/8.5;
     background-size: 200%;
-    animation: scan-image 15s linear infinite;
+    animation: scan-image-cinematic 15s linear infinite;
 }
 
 /* ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///  ///
@@ -166,4 +203,31 @@ $gradientBlueGreen: linear-gradient(90deg, rgb(38, 247, 197) 0%, rgb(136, 149, 2
         background-position: 72% 14%;
         background-size: 300%;
     }
+}
+
+@keyframes scan-image-cinematic {
+  0% {
+    background-position: 35% 40%;
+    background-size: 180%;
+  }
+
+  25% {
+    background-position: 50% 30%;
+    background-size: 200%;
+  }
+
+  50% {
+    background-position: 65% 60%;
+    background-size: 240%;
+  }
+
+  75% {
+    background-position: 40% 70%;
+    background-size: 220%;
+  }
+
+  100% {
+    background-position: 35% 40%;
+    background-size: 180%;
+  }
 }

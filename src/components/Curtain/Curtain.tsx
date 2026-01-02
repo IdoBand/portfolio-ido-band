@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import homeImg from '/home.jpg'
+import homeImg from '/pages/homePage.png'
 import Home from '../../pages/Home'
 import Projects from '../../pages/Projects'
-import About from '../../pages/About'
+import Activity from '../../pages/Activity'
 import Contact from '../Contact'
-import aboutImg from '/about.jpg'
-import projectsImg from '/projects.jpg'
+import aboutImg from '/pages/activityPage.png'
+import projectsImg from '/pages/projectsPage.png'
 import './Curtain.scss'
 
 const Curtain = () => {
@@ -23,7 +23,7 @@ const Curtain = () => {
             {LINKS[currentPage].page}
         </section>
         <button
-            className='toggle-menu-button text-3xl text-light flex-center'
+            className={`toggle-menu-button text-3xl text-light flex-center ${!isMenuOpen && currentPage === 0 ? 'heartBeat60' : ''}`}
             onClick={() => setIsMenuOpen(prev => !prev)}
             >
         </button>
@@ -59,8 +59,8 @@ const LINKS = [
     },
     {
         src: aboutImg,
-        title: 'About',
+        title: 'Activity',
         key: 2,
-        page: <About key={'about'} />
+        page: <Activity key={'about'} />
     },
 ]

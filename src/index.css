@@ -10,7 +10,8 @@
 }
 
 .page-layout {
-    @apply bg-bgGradient px-24 pt-10 pb-32 min-h-screen w-screen xl:px-20 lg:px-16 lg:pt-6 md:px-12 sm:px-8
+    background-image: linear-gradient(#ebeef5, #a6e3f1, #f6faff);
+    @apply px-24 pt-10 pb-32 min-h-screen w-screen xl:px-20 lg:px-16 lg:pt-6 md:px-12 sm:px-8
 }
 .page-header {
     @apply pb-6 lg:!text-7xl sm:!text-6xl xs:!text-4xl
