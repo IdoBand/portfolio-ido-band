@@ -10,7 +10,7 @@ export default function Home() {
         <main className='page-layout w-screen'>
             <div className={`text-dark w-3/4 dark:text-light pt-10 lg:pt-2 absolute z-10 translate-center rounded-3xl p-6`}>
                 <div className='flex-center gap-8 lg:flex-col lg:pt-12'>
-                    <div className='bgGradient rounded-full border-8 border-solid border-lightGray p-4 mt-10 lg:w-2/3'>
+                    <div className='bgGradient rounded-full border-2 border-solid border-black/40 p-3 mt-10 lg:w-2/3'>
                         <img src={homePortfolioImage} className='relative -bottom-4 w-auto h-auto rounded-full' />
                     </div>
                     <div className='w-[60%] flex flex-col items-center lg:w-full lg:text-center'>
