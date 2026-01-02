@@ -1,8 +1,6 @@
 import AnimatedText from '../components/AnimatedText'
-import htImg from '/projects/hour-tracker.jpg'
 import twobpImg from '/projects/two-b-precise.jpg'
 import pgImg from '/projects/private-garden.jpg'
-import wordleImg from '/projects/wordle.jpg'
 import cssQuidditchGameImg from '/projects/css-quidditch-game.jpg'
 import ProjectCard from '../components/ProjectCard'
 const PROJECT_TYPE = {
@@ -86,7 +84,7 @@ const PROJECTS: ProjectCardProps[] = [
         show: true,
         type: PROJECT_TYPE.fullstack,
         title: 'Realistix',
-        summary: `Realistix simplifies the path from BIM to visualization by connecting Autodesk Revit directly with Google’s AI rendering models. It lets designers generate professional images and videos from structured Revit views while keeping layouts, aspect ratios, and project outputs consistent and organized.`,
+        summary: `Realistix simplifies the path from BIM to visualization by connecting Autodesk Revit with Google’s AI rendering models. It lets designers generate professional images and videos from structured Revit views while keeping layouts, aspect ratios, and project outputs consistent and organized.`,
         about: {
             frontend: 'React, SCSS, Vite, TypeScript',
             backend: 'AWS EC2 Ubuntu & S3, Github Actions CI/CD, Node.js, Express, TypeScript',
@@ -94,7 +92,7 @@ const PROJECTS: ProjectCardProps[] = [
         },
         video: '/projects/realistix-blend.mp4',
         link: 'https://www.realistix.co/',
-        githubLink: 'https://github.com/IdoBand/private-garden',
+        
     },
     {
         show: false,
@@ -113,6 +111,21 @@ const PROJECTS: ProjectCardProps[] = [
     {
         show: true,
         type: PROJECT_TYPE.frontend,
+        title: 'CSS Quidditch Game',
+        summary: `a short game to practice 3D in CSS`,
+        about: {
+            frontend: 'React, TypeScript, Vite, SCSS',
+            backend: '',
+            database: ''
+        },
+        img: cssQuidditchGameImg,
+        video: '/projects/css-quiditch-game.mp4',
+        link: 'https://css-quiditch-game.onrender.com/',
+        githubLink: 'https://github.com/IdoBand/css-quiditch-game',
+    },
+    {
+        show: true,
+        type: PROJECT_TYPE.frontend,
         title: '2bPrecise Replica',
         summary: `Recreation of a cool and interactive homepage design.`,
         about: {
@@ -124,46 +137,4 @@ const PROJECTS: ProjectCardProps[] = [
         link: 'https://twobprecise-replica.onrender.com/',
         githubLink: 'https://github.com/IdoBand/2bprecise-replica',
     },
-    {
-        show: true,
-        type: PROJECT_TYPE.frontend,
-        title: 'CSS Quidditch Game',
-        summary: `a short game to practice 3D in CSS`,
-        about: {
-            frontend: 'React, TypeScript, Vite, SCSS',
-            backend: '',
-            database: ''
-        },
-        img: cssQuidditchGameImg,
-        link: 'https://css-quiditch-game.onrender.com/',
-        githubLink: 'https://github.com/IdoBand/css-quiditch-game',
-    },
-    {
-        show: false,
-        type: PROJECT_TYPE.fullstack,
-        title: 'Hour Tracker',
-        summary: `An app that helps you keep track of your work hours, automatically calculate your salary and can be used as a diary for tasks as well.`,
-        about: {
-            frontend: 'Next.js 13, React, TypeScript, Tailwind CSS',
-            backend: 'Next.js 13',
-            database: 'PostgresSQL'
-        },
-        img: htImg,
-        link: 'https://hour-tracker.vercel.app/',
-        githubLink: 'https://github.com/IdoBand/hour-tracker',
-    },
-    {
-        show: false,
-        type: PROJECT_TYPE.fullstack,
-        title: 'Wordle',
-        summary: `A word-guessing game where players attempt to guess a hidden five-letter word by making multiple guesses and receiving feedback on the correctness of each guess.`,
-        about: {
-            frontend: 'React, Tailwind CSS, Vite, TypeScript',
-            backend: 'AWS - EC2 Ubuntu, Node.js, Express, TypeScript',
-            database: 'PostgresSQL'
-        },
-        img: wordleImg,
-        link: 'https://wordle-game-lgye.onrender.com/',
-        githubLink: 'https://github.com/IdoBand/wordle',
-    }
 ];
